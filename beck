@@ -1,3 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример JavaScript-теста</title>
+</head>
+<body>
+
+<div id="question">Какой цвет неба?</div>
+<button onclick="checkAnswer('Голубой')">Голубой</button>
+<button onclick="checkAnswer('Зеленый')">Зеленый</button>
+<button onclick="checkAnswer('Красный')">Красный</button>
+
 <script type="text/javascript">
-  // Ваш JavaScript-код здесь
+// Вопрос и правильный ответ
+var question = "Какой цвет неба?";
+var correctAnswer = "Голубой";
+
+// Функция для проверки ответа
+function checkAnswer(answer) {
+  if (answer === correctAnswer) {
+    alert("Правильно! Цвет неба - Голубой.");
+  } else {
+    alert("Неправильно. Попробуйте еще раз.");
+  }
+}
+
+// Отображение вопроса
+document.getElementById("question").textContent = question;
 </script>
+
+</body>
+</html>
