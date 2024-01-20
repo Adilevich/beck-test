@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Тест на тревожность Бека</title>
+</head>
+<body>
+
+<!-- Вопросы теста -->
+<div class="question">
+  <p>1. Ощущение онемения или покалывания в теле</p>
+  <input type="radio" name="question1" value="0"> Совсем не беспокоит<br>
+  <input type="radio" name="question1" value="1"> Слегка<br>
+  <input type="radio" name="question1" value="2"> Умеренно<br>
+  <input type="radio" name="question1" value="3"> Очень сильно<br>
+</div>
+<!-- Повторите аналогичную структуру для вопросов с 2 по 21, изменяя номер вопроса и атрибут name -->
+
+<!-- ... -->
+
+<div class="question">
+  <p>21. Усиление потоотделения (не связанное с жарой)</p>
+  <input type="radio" name="question21" value="0"> Совсем не беспокоит<br>
+  <input type="radio" name="question21" value="1"> Слегка<br>
+  <input type="radio" name="question21" value="2"> Умеренно<br>
+  <input type="radio" name="question21" value="3"> Очень сильно<br>
+</div>
+
+<button onclick="calculateScore()">Получить результат</button>
+
+<div id="result"></div>
+
+<script>
+function calculateScore() {
+  var score = 0;
+  var totalQuestions = 21;
+  for(var i = 1; i <= totalQuestions; i++) {
+    var radios = document.getElementsByName('question' + i);
+    for(var j = 0; j < radios.length; j++) {
+      var radio = radios[j];
+      if(radio.checked) {
+        score += parseInt(radio.value, 10);
+        break;
+      }
+    }
+  }
+
+  var resultText = '';
+  if(score <= 21) {
+    resultText = 'Незначительная тревога';
+  } else if(score <= 35) {
+    resultText = 'Средняя тревога';
+  } else {
+    resultText = 'Очень высокая тревога';
+  }
+
+  document.getElementById('result').innerText = 'Ваш результат: ' + score + '. ' + resultText;
+}
+</script>
+
+</body>
+</html>
